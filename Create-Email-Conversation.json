@@ -1,0 +1,86 @@
+{
+  "name": "Create Email Conversation",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/conversations/emails",
+      "requestType": "POST",
+      "headers": {},
+      "requestTemplate": "{\n\"flowId\": \"${input.flowId}\",\n\"provider\": \"${input.provider}\",\n\"subject\": \"$!{input.subject}\",\n\"fromName\": \"$!{input.fromName}\",\n\"fromAddress\": \"$!{input.fromAddress}\",\n\"attributes\": {\n\"$!{input.attribute1Name}\": \"$!{input.attribute1Value}\",\n\"$!{input.attribute2Name}\": \"$!{input.attribute2Value}\",\n\"$!{input.attribute3Name}\": \"$!{input.attribute3Value}\",\n\"$!{input.attribute4Name}\": \"$!{input.attribute4Value}\",\n\"$!{input.attribute5Name}\": \"$!{input.attribute5Value}\"\n}\n}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "type": "object",
+        "required": ["flowId", "provider"],
+        "properties": {
+          "flowId": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "fromName": {
+            "type": "string"
+          },
+          "fromAddress": {
+            "type": "string"
+          },
+          "attribute1Name": {
+            "type": "string"
+          },
+          "attribute1Value": {
+            "type": "string"
+          },
+          "attribute2Name": {
+            "type": "string"
+          },
+          "attribute2Value": {
+            "type": "string"
+          },
+          "attribute3Name": {
+            "type": "string"
+          },
+          "attribute3Value": {
+            "type": "string"
+          },
+          "attribute4Name": {
+            "type": "string"
+          },
+          "attribute4Value": {
+            "type": "string"
+          },
+          "attribute5Name": {
+            "type": "string"
+          },
+          "attribute5Value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}
